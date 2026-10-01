@@ -3,10 +3,11 @@ import { bindings } from "../bindings.server";
 const COOKIE = "alc_admin";
 const MAX_AGE = 60 * 60 * 12;
 
+// Surrounding whitespace is ignored on both sides: it is easily pasted into the dashboard or typed on mobile by accident.
 function secret(): string | null {
   const env = bindings() as unknown as Record<string, unknown>;
-  const v = env.ADMIN_PASSWORD;
-  return typeof v === "string" && v.length >= 8 ? v : null;
+  const v = typeof env.ADMIN_PASSWORD === "string" ? env.ADMIN_PASSWORD.trim() : "";
+  return v.length >= 8 ? v : null;
 }
 export function adminConfigured(): boolean {
   return secret() !== null;
@@ -27,7 +28,7 @@ function safeEqual(a: string, b: string): boolean {
 export async function checkPassword(pw: string): Promise<boolean> {
   const s = secret();
   if (!s) return false;
-  const [a, b] = await Promise.all([hmac(pw, "cmp"), hmac(s, "cmp")]);
+  const [a, b] = await Promise.all([hmac(pw.trim(), "cmp"), hmac(s, "cmp")]);
   return safeEqual(a, b);
 }
 
