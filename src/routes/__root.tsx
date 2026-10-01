@@ -29,6 +29,8 @@ type AppMeta = {
   marketplace_cover_url?: string | null;
 };
 const appMeta = appMetaJson as AppMeta;
+// Google Search Console "HTML tag" verification code (only the content="..." value).
+const GSC_VERIFICATION = (import.meta.env.VITE_GSC_VERIFICATION as string | undefined) || "";
 
 function buildHead(meta: AppMeta) {
   const title = meta.og_title ?? "Alcomir";
@@ -46,6 +48,7 @@ function buildHead(meta: AppMeta) {
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       ...(meta.og_image_url ? [{ property: "og:image", content: meta.og_image_url }, { name: "twitter:image", content: meta.og_image_url }] : []),
+      ...(GSC_VERIFICATION ? [{ name: "google-site-verification", content: GSC_VERIFICATION }] : []),
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
