@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* Alocmir, Dubai luxury theme: black, champagne gold, ivory. */
+@theme {
+  --color-surface: #0b0b0c;
+  --color-raised: #151517;
+  --color-ink: #f5efe4;
+  --color-muted: #b3aa9a;
+  --color-gold: #c8a45c;
+  --color-gold-light: #e2c88f;
+  --color-ongold: #0b0b0c;
+  --color-tint: #241f16;
+  --color-deep: #1a1712;
+  --color-line: #2a2824;
+  --color-line-strong: #5f594e;
+  --color-link: #e2c88f;
+  --color-ok: #5cc28d;
+  --color-warn: #e3b341;
+  --color-bad: #ff8a80;
+  --font-brand: "Manrope", system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --text-fs12: 12px;
+  --text-fs13: 13px;
+  --text-fs14: 14px;
+  --text-fs15: 15px;
+  --text-fs16: 16px;
+  --text-fs17: 17px;
+  --text-fs18: 18px;
+  --text-fs19: 19px;
+  --text-fs20: 20px;
+  --text-fs22: 22px;
+  --text-fs24: 24px;
+  --text-fs26: 26px;
+  --text-fs30: 30px;
+  --text-fs32: 32px;
+  --text-fs34: 34px;
+  --text-fs36: 36px;
+  --text-fs40: 40px;
+  --text-fs46: 46px;
+  --text-fs48: 48px;
+  --text-fs52: 52px;
+  --text-fs56: 56px;
+  --text-fs64: 64px;
+}
+
+.alc-body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-brand);
+  -webkit-font-smoothing: antialiased;
+}
+.alc-body h1, .alc-body h2, .alc-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.alc-body :focus-visible { outline: 2px solid var(--color-gold); outline-offset: 2px; }
+.alc-tabular { font-variant-numeric: tabular-nums; }
+.alc-noscroll { scrollbar-width: none; }
+.alc-noscroll::-webkit-scrollbar { display: none; }
+
+/* Thin gold hairline used as a section divider. */
+.alc-hairline { height: 1px; background: linear-gradient(90deg, transparent, var(--color-gold), transparent); opacity: .55; }
+.alc-glow-bg {
+  background:
+    radial-gradient(90% 50% at 50% 0%, color-mix(in oklab, var(--color-gold) 9%, transparent), transparent 70%),
+    var(--color-surface);
+}
+.alc-gold-text {
+  background: linear-gradient(100deg, var(--color-gold) 0%, var(--color-gold-light) 45%, var(--color-gold) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+@keyframes alc-rise { from { transform: translateY(16px); } to { transform: translateY(0); } }
+.alc-rise { animation: alc-rise 800ms cubic-bezier(.2,.7,.2,1) both; }
+@keyframes alc-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+.alc-zoom { animation: alc-zoom 2.4s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes alc-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.alc-marquee { animation: alc-marquee 40s linear infinite; }
+@keyframes alc-scroll-dot { 0% { transform: translate(-50%, 0); opacity: 1; } 80% { transform: translate(-50%, 16px); opacity: 0; } 100% { opacity: 0; } }
+.alc-scroll-dot { animation: alc-scroll-dot 1.6s ease-in-out infinite; }
+@keyframes alc-wa-pulse { 0% { transform: scale(1); opacity: .55; } 70%, 100% { transform: scale(1.45); opacity: 0; } }
+.alc-wa-pulse { animation: alc-wa-pulse 2.4s ease-out infinite; z-index: -1; }
+@media (prefers-reduced-motion: reduce) {
+  .alc-rise, .alc-zoom, .alc-marquee, .alc-scroll-dot, .alc-wa-pulse { animation: none; }
+  .alc-body * { transition-duration: 0ms !important; }
+}

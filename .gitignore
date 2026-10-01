@@ -1,0 +1,12 @@
+node_modules
+.output
+.vercel
+.nitro
+.tanstack
+dist
+*.db
+.env
+.env.local
+
+# Local tool config
+.claude/
