@@ -28,7 +28,7 @@ export const Route = createFileRoute("/$lang/blog/$slug")({
     if (!post) return {};
     return pageHead({
       lang, rest: `/blog/${post.slug}`, type: "article", langs: post.langs, image: post.cover,
-      title: post.metaTitle || `${post.title} | Alocmir`, description: post.metaDesc || post.excerpt,
+      title: post.metaTitle || `${post.title} | Alcomir`, description: post.metaDesc || post.excerpt,
       published: post.publishedAt, modified: post.updatedAt,
     });
   },

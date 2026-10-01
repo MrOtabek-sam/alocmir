@@ -13,8 +13,8 @@ import { getProduct } from "@/lib/store/store.functions";
 const rootApi = getRouteApi("__root__");
 
 function seoTitle(name: string, lang: Lang) {
-  if (lang === "ru") return `${name}: купить в Дубае с доставкой | Alocmir`;
-  return `${name}: Buy in Dubai, Delivered Cold | Alocmir`;
+  if (lang === "ru") return `${name}: купить в Дубае с доставкой | Alcomir`;
+  return `${name}: Buy in Dubai, Delivered Cold | Alcomir`;
 }
 function seoDesc(name: string, price: string, lang: Lang) {
   if (lang === "ru") return `${name} за ${price} с доставкой по Дубаю. Привезём охлаждённым, оплата при получении. Только 21+.`;

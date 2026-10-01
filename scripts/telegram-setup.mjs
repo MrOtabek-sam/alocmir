@@ -33,7 +33,7 @@ if (!chats.size) {
   process.exit(0);
 }
 for (const [id, name] of chats) {
-  const sent = await api("sendMessage", { chat_id: id, text: "✅ Alocmir notifications are connected. New orders will appear here." });
+  const sent = await api("sendMessage", { chat_id: id, text: "✅ Alcomir notifications are connected. New orders will appear here." });
   console.log(`${sent.ok ? "Test message sent to" : "Could not message"} ${name}: TELEGRAM_CHAT_ID=${id}`);
 }
 console.log("\nAdd TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID to .env (and Vercel > Settings > Environment Variables).");

@@ -31,7 +31,7 @@ type AppMeta = {
 const appMeta = appMetaJson as AppMeta;
 
 function buildHead(meta: AppMeta) {
-  const title = meta.og_title ?? "Alocmir";
+  const title = meta.og_title ?? "Alcomir";
   const description = meta.og_description ?? "";
   return {
     meta: [
@@ -39,7 +39,7 @@ function buildHead(meta: AppMeta) {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title },
       { name: "description", content: description },
-      { name: "author", content: "Alocmir" },
+      { name: "author", content: "Alcomir" },
       { name: "theme-color", content: THEME_COLOR },
       { property: "og:title", content: title },
       { property: "og:description", content: description },

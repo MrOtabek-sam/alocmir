@@ -17,7 +17,7 @@ export const Route = createFileRoute("/$lang/catalog/$category")({
     const c = loaderData?.category;
     if (!c) return {};
     return pageHead({
-      lang, rest: `/catalog/${c.slug}`, title: `${categoryH1(c.name, lang)} | Alocmir`,
+      lang, rest: `/catalog/${c.slug}`, title: `${categoryH1(c.name, lang)} | Alcomir`,
       description: c.intro, image: c.image,
     });
   },

@@ -1,4 +1,4 @@
--- Alocmir store schema. Additive only.
+-- Alcomir store schema. Additive only.
 CREATE TABLE IF NOT EXISTS categories (
   slug TEXT PRIMARY KEY, sort INTEGER NOT NULL DEFAULT 0, image TEXT,
   name_en TEXT NOT NULL, name_ru TEXT, name_ar TEXT,

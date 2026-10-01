@@ -18,7 +18,7 @@ export const Route = createFileRoute("/$lang/cart")({
   },
   head: ({ params }) => {
     const lang = (isLang(params.lang) ? params.lang : "en") as Lang;
-    return pageHead({ lang, rest: "/cart", title: `${T[lang].cart} | Alocmir`, description: T[lang].catalogIntro, noindex: true });
+    return pageHead({ lang, rest: "/cart", title: `${T[lang].cart} | Alcomir`, description: T[lang].catalogIntro, noindex: true });
   },
   component: CartRoute,
 });

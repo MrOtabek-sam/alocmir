@@ -20,7 +20,7 @@ export const Route = createFileRoute("/$lang/delivery/")({
   },
   head: ({ params }) => {
     const lang = (isLang(params.lang) ? params.lang : "en") as Lang;
-    return pageHead({ lang, rest: "/delivery", title: lang === "en" ? "Alcohol Delivery in Dubai: Areas, Hours, Fees | Alocmir" : `${T[lang].deliveryTitle} | Alocmir`, description: DESC[lang] });
+    return pageHead({ lang, rest: "/delivery", title: lang === "en" ? "Alcohol Delivery in Dubai: Areas, Hours, Fees | Alcomir" : `${T[lang].deliveryTitle} | Alcomir`, description: DESC[lang] });
   },
   component: DeliveryRoute,
 });

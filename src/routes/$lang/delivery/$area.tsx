@@ -22,7 +22,7 @@ export const Route = createFileRoute("/$lang/delivery/$area")({
     if (!area) return {};
     const name = area.name[lang];
     const eta = loaderData?.settings.delivery_eta ?? "45-60";
-    const title = lang === "en" ? `Alcohol Delivery ${name} | Alocmir, ${eta} min` : `${fill(T[lang].areaH1, { area: name })} | Alocmir`;
+    const title = lang === "en" ? `Alcohol Delivery ${name} | Alcomir, ${eta} min` : `${fill(T[lang].areaH1, { area: name })} | Alcomir`;
     return pageHead({ lang, rest: `/delivery/${area.slug}`, title, description: fill(T[lang].areaIntro, { area: name, eta }) });
   },
   component: AreaRoute,

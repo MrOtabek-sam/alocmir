@@ -14,7 +14,7 @@ export const Route = createFileRoute("/$lang/catalog/")({
   loader: ({ params }) => getCatalog({ data: { lang: params.lang as Lang } }),
   head: ({ params }) => {
     const lang = (isLang(params.lang) ? params.lang : "en") as Lang;
-    return pageHead({ lang, rest: "/catalog", title: `${T[lang].catalogTitle} | Alocmir`, description: T[lang].catalogIntro });
+    return pageHead({ lang, rest: "/catalog", title: `${T[lang].catalogTitle} | Alcomir`, description: T[lang].catalogIntro });
   },
   component: Catalog,
 });

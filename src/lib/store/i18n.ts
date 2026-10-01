@@ -4,7 +4,7 @@ export type Lang = (typeof LANGS)[number];
 export const DEFAULT_LANG: Lang = "ru";
 
 export const SITE_URL = ((import.meta.env.VITE_SITE_URL as string | undefined) || "http://localhost:3000").replace(/\/$/, "");
-export const BRAND = "Alocmir";
+export const BRAND = "Alcomir";
 
 export function isLang(v: unknown): v is Lang {
   return typeof v === "string" && (LANGS as readonly string[]).includes(v);
@@ -87,7 +87,7 @@ export const T: Record<Lang, Dict> = {
     faqTitle: "Alcohol delivery in Dubai: your questions",
     footerAge: "21+ only. ID is checked on delivery.", footerResponsible: "Please drink responsibly.",
     ageTitle: "Are you 21 or older?", ageBody: "You must be of legal drinking age in the UAE to enter this site.",
-    ageYes: "Yes, I am 21+", ageNo: "No", ageBlocked: "Sorry, you must be 21 or older to visit Alocmir.",
+    ageYes: "Yes, I am 21+", ageNo: "No", ageBlocked: "Sorry, you must be 21 or older to visit Alcomir.",
     cartEmpty: "Your cart is empty.", subtotal: "Subtotal", deliveryFee: "Delivery", free: "Free", total: "Total",
     checkout: "Delivery details", name: "Full name", phone: "Phone or WhatsApp", area: "Area",
     address: "Building, apartment or villa", notes: "Notes for the courier (optional)",
@@ -101,7 +101,7 @@ export const T: Record<Lang, Dict> = {
     catalogIntro: "Beer, wine and spirits delivered chilled across Dubai. Pay cash or card on delivery. 21+ only.",
     sortPopular: "Popular", sortLow: "Price: low to high", sortHigh: "Price: high to low", aed: "AED",
     continueShopping: "Continue shopping",
-    deliveryIntro: "Alocmir delivers beer, wine and spirits across Dubai to residents and tourists aged 21 and over. Orders arrive chilled, and you pay cash or card to the courier.",
+    deliveryIntro: "Alcomir delivers beer, wine and spirits across Dubai to residents and tourists aged 21 and over. Orders arrive chilled, and you pay cash or card to the courier.",
     areasTitle: "Areas we deliver to", sending: "Sending...", errorGeneric: "Something went wrong. Please try again.",
     tagline: "Ice-cold drinks, delivered across Dubai.",
     heroTitle: "Alcohol delivery in Dubai",
@@ -128,11 +128,11 @@ export const T: Record<Lang, Dict> = {
     popupThanks: "Your code:",
     popupNo: "No thanks",
     areaH1: "Alcohol delivery in {area}",
-    areaIntro: "Alocmir delivers beer, wine, champagne and spirits to {area} in about {eta} minutes. Orders arrive chilled, ID is checked at the door, and you pay cash or card to the courier.",
+    areaIntro: "Alcomir delivers beer, wine, champagne and spirits to {area} in about {eta} minutes. Orders arrive chilled, ID is checked at the door, and you pay cash or card to the courier.",
     save: "Save",
-    waMessage: "Hello Alocmir, I would like to order:",
+    waMessage: "Hello Alcomir, I would like to order:",
     blog: "Blog",
-    blogTitle: "Dubai drinks guide: the Alocmir blog",
+    blogTitle: "Dubai drinks guide: the Alcomir blog",
     blogIntro: "Rules, tips and pairings for drinking well in Dubai: what to order for a brunch, a yacht day or a quiet night in.",
     readMore: "Read",
     minRead: "min read",
@@ -157,7 +157,7 @@ export const T: Record<Lang, Dict> = {
     faqTitle: "Доставка алкоголя в Дубае: вопросы и ответы",
     footerAge: "Только 21+. Документ проверяется при доставке.", footerResponsible: "Пейте ответственно.",
     ageTitle: "Вам уже есть 21 год?", ageBody: "Для входа на сайт нужно достичь легального возраста употребления алкоголя в ОАЭ.",
-    ageYes: "Да, мне 21+", ageNo: "Нет", ageBlocked: "Извините, сайт Alocmir доступен только с 21 года.",
+    ageYes: "Да, мне 21+", ageNo: "Нет", ageBlocked: "Извините, сайт Alcomir доступен только с 21 года.",
     cartEmpty: "Корзина пуста.", subtotal: "Сумма", deliveryFee: "Доставка", free: "Бесплатно", total: "Итого",
     checkout: "Данные для доставки", name: "Имя и фамилия", phone: "Телефон или WhatsApp", area: "Район",
     address: "Здание, квартира или вилла", notes: "Комментарий для курьера (необязательно)",
@@ -171,7 +171,7 @@ export const T: Record<Lang, Dict> = {
     catalogIntro: "Пиво, вино и крепкий алкоголь с доставкой по Дубаю, охлаждённые. Оплата наличными или картой при получении. Только 21+.",
     sortPopular: "Популярные", sortLow: "Сначала дешевле", sortHigh: "Сначала дороже", aed: "AED",
     continueShopping: "Продолжить покупки",
-    deliveryIntro: "Alocmir доставляет пиво, вино и крепкий алкоголь по всему Дубаю резидентам и туристам от 21 года. Заказ приезжает охлаждённым, оплата наличными или картой курьеру.",
+    deliveryIntro: "Alcomir доставляет пиво, вино и крепкий алкоголь по всему Дубаю резидентам и туристам от 21 года. Заказ приезжает охлаждённым, оплата наличными или картой курьеру.",
     areasTitle: "Районы доставки", sending: "Отправляем...", errorGeneric: "Что-то пошло не так. Попробуйте ещё раз.",
     tagline: "Ледяные напитки с доставкой по Дубаю.",
     heroTitle: "Доставка алкоголя в Дубае",
@@ -198,11 +198,11 @@ export const T: Record<Lang, Dict> = {
     popupThanks: "Ваш код:",
     popupNo: "Нет, спасибо",
     areaH1: "Доставка алкоголя: {area}",
-    areaIntro: "Alocmir доставляет пиво, вино, шампанское и крепкий алкоголь в {area} примерно за {eta} минут. Заказ приезжает охлаждённым, курьер проверяет документ, оплата наличными или картой.",
+    areaIntro: "Alcomir доставляет пиво, вино, шампанское и крепкий алкоголь в {area} примерно за {eta} минут. Заказ приезжает охлаждённым, курьер проверяет документ, оплата наличными или картой.",
     save: "Скидка",
-    waMessage: "Здравствуйте, Alocmir! Хочу заказать:",
+    waMessage: "Здравствуйте, Alcomir! Хочу заказать:",
     blog: "Блог",
-    blogTitle: "Блог Alocmir: гид по напиткам в Дубае",
+    blogTitle: "Блог Alcomir: гид по напиткам в Дубае",
     blogIntro: "Правила, советы и сочетания: что заказать на бранч, на яхту или для спокойного вечера дома в Дубае.",
     readMore: "Читать",
     minRead: "мин чтения",

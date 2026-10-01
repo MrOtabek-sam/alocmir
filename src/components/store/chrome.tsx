@@ -10,9 +10,9 @@ import { track } from "@/lib/analytics";
 
 function Wordmark({ lang, size = "md" }: { lang: Lang; size?: "md" | "lg" }) {
   return (
-    <SLink to={homePath(lang)} className="flex items-center gap-3" aria-label="Alocmir home">
+    <SLink to={homePath(lang)} className="flex items-center gap-3" aria-label="Alcomir home">
       <img src="/assets/brand/mark.png" alt="" role="presentation" width={36} height={36} className="size-9 rounded-full border border-gold/40" />
-      <span className={`alc-display alc-gold-text ${size === "lg" ? "text-fs30" : "text-fs24"} font-semibold tracking-[0.06em]`}>ALOCMIR</span>
+      <span className={`alc-display alc-gold-text ${size === "lg" ? "text-fs30" : "text-fs24"} font-semibold tracking-[0.06em]`}>ALCOMIR</span>
     </SLink>
   );
 }
@@ -244,7 +244,7 @@ export function SiteFooter({ lang, settings, categories }: { lang: Lang; setting
           {settings?.phone ? <p><a href={`tel:${settings.phone}`} className="alc-tabular text-ink/85 hover:text-gold">{settings.phone}</a></p> : null}
         </div>
       </div>
-      <div className="border-t border-line px-4 py-5 text-center text-fs12 text-muted">© {new Date().getFullYear()} Alocmir, Dubai</div>
+      <div className="border-t border-line px-4 py-5 text-center text-fs12 text-muted">© {new Date().getFullYear()} Alcomir, Dubai</div>
     </footer>
   );
 }
@@ -274,7 +274,7 @@ export function AgeGate({ lang }: { lang: Lang }) {
     <div role="dialog" aria-modal="true" aria-labelledby="age-title" className="fixed inset-0 z-[100] flex items-center justify-center bg-surface/95 p-4 backdrop-blur-md">
       <div className="w-full max-w-[440px] rounded-[18px] border border-gold/40 bg-raised p-9 text-center">
         <img src="/assets/brand/mark.png" alt="" role="presentation" width={64} height={64} className="mx-auto mb-4 size-16 rounded-full border border-gold/40" />
-        <p className="alc-display alc-gold-text text-fs24 tracking-[0.08em]">ALOCMIR</p>
+        <p className="alc-display alc-gold-text text-fs24 tracking-[0.08em]">ALCOMIR</p>
         <div className="alc-hairline my-5" />
         {state === "blocked" ? (
           <p className="text-fs17 text-ink">{t.ageBlocked}</p>

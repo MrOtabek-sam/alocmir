@@ -17,7 +17,7 @@ export const Route = createFileRoute("/$lang/blog/")({
   loader: ({ params }) => getBlog({ data: { lang: params.lang as Lang } }),
   head: ({ params }) => {
     const lang = (isLang(params.lang) ? params.lang : DEFAULT_LANG) as Lang;
-    return pageHead({ lang, rest: "/blog", title: `${T[lang].blogTitle} | Alocmir`, description: T[lang].blogIntro });
+    return pageHead({ lang, rest: "/blog", title: `${T[lang].blogTitle} | Alcomir`, description: T[lang].blogIntro });
   },
   component: BlogIndex,
 });

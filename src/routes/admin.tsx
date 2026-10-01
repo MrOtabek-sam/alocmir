@@ -10,7 +10,7 @@ import {
 import type { CategoryRow, ProductRow } from "@/lib/store/db.server";
 
 export const Route = createFileRoute("/admin")({
-  head: () => ({ meta: [{ title: "Admin | Alocmir" }, { name: "robots", content: "noindex, nofollow" }] }),
+  head: () => ({ meta: [{ title: "Admin | Alcomir" }, { name: "robots", content: "noindex, nofollow" }] }),
   loader: async () => {
     const status = await adminStatus();
     if (!status.loggedIn) return { status, data: null };
@@ -36,7 +36,7 @@ function Login({ configured }: { configured: boolean }) {
     <main className="flex min-h-dvh items-center justify-center px-4">
       <form onSubmit={submit} className="w-full max-w-[380px] space-y-4 rounded-[16px] border border-line bg-raised p-8">
         <img src="/assets/brand/mark.png" alt="" role="presentation" width={44} height={44} className="size-11 rounded-[10px]" />
-        <h1 className="text-fs24 font-bold text-ink">Alocmir admin</h1>
+        <h1 className="text-fs24 font-bold text-ink">Alcomir admin</h1>
         {!configured ? (
           <p className="text-fs14 leading-relaxed text-warn">
             Set the ADMIN_PASSWORD environment variable (8+ characters) in your Vercel project settings, then redeploy.
@@ -205,7 +205,7 @@ function Leads({ leads }: { leads: Dash["leads"] }) {
     <div>
       <div className="mb-4 flex items-center justify-between">
         <p className="text-fs14 text-muted">{leads.length} WhatsApp numbers from the 10% popup. Message them new offers and restocks.</p>
-        <a download="alocmir-leads.csv" href={`data:text/csv;charset=utf-8,${encodeURIComponent(csv)}`} className="h-9 rounded-[8px] border border-gold px-4 py-2 text-fs13 font-semibold text-gold">Download CSV</a>
+        <a download="alcomir-leads.csv" href={`data:text/csv;charset=utf-8,${encodeURIComponent(csv)}`} className="h-9 rounded-[8px] border border-gold px-4 py-2 text-fs13 font-semibold text-gold">Download CSV</a>
       </div>
       <ul className="divide-y divide-line rounded-[12px] border border-line">
         {leads.map((l) => (
@@ -310,7 +310,7 @@ function AdminRoute() {
       <header className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <img src="/assets/brand/mark.png" alt="" role="presentation" width={36} height={36} className="size-9 rounded-[8px]" />
-          <h1 className="text-fs22 font-bold text-ink">Alocmir admin</h1>
+          <h1 className="text-fs22 font-bold text-ink">Alcomir admin</h1>
         </div>
         <div className="flex items-center gap-4 text-fs14">
           <a href="/" target="_blank" rel="noopener" className="text-link">View site</a>

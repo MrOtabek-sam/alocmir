@@ -112,7 +112,7 @@ export function HomePage({ lang, data, chromeCats }: { lang: Lang; data: HomeDat
       />
 
       {/* Trust strip */}
-      <section aria-label="Why Alocmir" className="border-y border-line bg-raised">
+      <section aria-label="Why Alcomir" className="border-y border-line bg-raised">
         <ul className="mx-auto grid max-w-[1280px] grid-cols-2 gap-px md:grid-cols-4">
           {trust.map((x) => (
             <li key={x} className="flex items-center justify-center gap-3 px-4 py-5 text-center text-fs14 font-semibold text-ink">

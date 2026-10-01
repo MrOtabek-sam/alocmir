@@ -1,4 +1,4 @@
-# Alocmir: alcohol delivery store for Dubai
+# Alcomir: alcohol delivery store for Dubai
 
 Premium black-and-gold online store with English, Russian and Arabic (RTL), an admin panel,
 promo codes, WhatsApp ordering, lead capture and full SEO (sitemap, hreflang, Product/FAQ/Breadcrumb
@@ -9,16 +9,16 @@ Stack: TanStack Start (React 19, server-rendered) on Vercel, Turso (SQLite) data
 ## 1. Put the code on GitHub
 1. Create a new **private** repository on github.com (for example `alocmir`).
 2. Upload everything in this folder (drag and drop on GitHub works), or from a terminal:
-   git init && git add . && git commit -m "Alocmir store"
+   git init && git add . && git commit -m "Alcomir store"
    git remote add origin https://github.com/YOUR-USER/alocmir.git
    git push -u origin main
 
 ## 2. Create the database (Turso, free)
 1. Sign up at https://turso.tech (web dashboard or CLI).
 2. Create a database in the region closest to Dubai (e.g. Mumbai or Frankfurt):
-   turso db create alocmir
-   turso db show alocmir --url          -> TURSO_DATABASE_URL
-   turso db tokens create alocmir       -> TURSO_AUTH_TOKEN
+   turso db create alcomir
+   turso db show alcomir --url          -> TURSO_DATABASE_URL
+   turso db tokens create alcomir       -> TURSO_AUTH_TOKEN
 3. Load the tables and sample products (needs Node.js 22+ on your computer):
    npm install
    TURSO_DATABASE_URL=libsql://... TURSO_AUTH_TOKEN=... npm run db:migrate
