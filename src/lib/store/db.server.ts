@@ -24,7 +24,7 @@ export type Product = {
   volume: number | null; abv: number | null; origin: string | null; image: string; stock: number; featured: boolean;
   updatedAt: string;
 };
-export type Category = { slug: string; name: string; intro: string; image: string };
+export type Category = { slug: string; name: string; intro: string; image: string; count: number };
 export type Settings = {
   delivery_fee: number; free_delivery_min: number; min_order: number;
   hours: string; whatsapp: string; phone: string; licence: string; delivery_eta: string;
@@ -53,15 +53,17 @@ export function localizeProduct(r: ProductRow, lang: Lang): Product {
     image: r.image || "/assets/products/whisky.jpg", stock: r.stock, featured: !!r.featured, updatedAt: r.updated_at,
   };
 }
-export function localizeCategory(r: CategoryRow, lang: Lang): Category {
+export function localizeCategory(r: CategoryRow & { n?: number }, lang: Lang): Category {
   return {
     slug: r.slug, name: pick(r, "name", lang) ?? r.name_en, intro: pick(r, "intro", lang) ?? "",
-    image: r.image || "/assets/products/whisky.jpg",
+    image: r.image || "/assets/products/whisky.jpg", count: Number(r.n ?? 0),
   };
 }
 
+/** All categories with the number of visible products in each (empty ones stay reachable but are hidden from menus). */
 export async function loadCategories(lang: Lang): Promise<Category[]> {
-  const res = await db().prepare("SELECT * FROM categories ORDER BY sort, slug").all<CategoryRow>();
+  const res = await db().prepare(`SELECT c.*, (SELECT COUNT(*) FROM products p WHERE p.category = c.slug AND p.active = 1) AS n
+    FROM categories c ORDER BY c.sort, c.slug`).all<CategoryRow & { n: number }>();
   return (res.results ?? []).map((r) => localizeCategory(r, lang));
 }
 

@@ -43,7 +43,7 @@ export function HomePage({ lang, data, chromeCats }: { lang: Lang; data: HomeDat
     ],
   });
   const trust = t.trust.map((x) => fill(x, { eta: s.delivery_eta }));
-  const cats = data.categories.filter((c) => c.slug !== "packs" && c.slug !== "mixers");
+  const cats = data.categories.filter((c) => c.count > 0 && c.slug !== "packs" && c.slug !== "mixers");
 
   return (
     <>

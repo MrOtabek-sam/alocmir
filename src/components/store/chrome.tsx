@@ -1,4 +1,4 @@
-import { useRouterState } from "@tanstack/react-router";
+import { getRouteApi, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 
 import { SLink } from "@/components/store/slink";
@@ -69,10 +69,13 @@ function LangSwitch({ lang }: { lang: Lang }) {
   );
 }
 
-const NAV: Record<Lang, [string, string][]> = {
-  en: [["/catalog/packs", "Party packs"], ["/catalog/sparkling", "Champagne"], ["/catalog/whisky", "Whisky"], ["/catalog/red-wine", "Wine"], ["/catalog/beer", "Beer"]],
-  ru: [["/catalog/packs", "Наборы"], ["/catalog/sparkling", "Шампанское"], ["/catalog/whisky", "Виски"], ["/catalog/red-wine", "Вино"], ["/catalog/beer", "Пиво"]],
-};
+const rootApi = getRouteApi("__root__");
+
+/** Header links: the categories that currently have products (from the root loader), up to six. */
+function useNav(): [string, string][] {
+  const root = rootApi.useLoaderData() as { categories?: { slug: string; name: string }[] } | undefined;
+  return (root?.categories ?? []).slice(0, 6).map((c) => [`/catalog/${c.slug}`, c.name]);
+}
 
 export function AnnouncementBar({ lang, settings }: { lang: Lang; settings: Settings | null }) {
   const t = T[lang];
@@ -87,13 +90,14 @@ export function AnnouncementBar({ lang, settings }: { lang: Lang; settings: Sett
 
 export function SiteHeader({ lang, overlay = false, settings = null }: { lang: Lang; overlay?: boolean; settings?: Settings | null }) {
   const t = T[lang];
+  const nav = useNav();
   return (
     <header className={`${overlay ? "absolute inset-x-0 top-0 bg-gradient-to-b from-surface/90 to-transparent" : "sticky top-0 border-b border-line bg-surface/92 backdrop-blur-md"} z-40`}>
       {!overlay ? <AnnouncementBar lang={lang} settings={settings} /> : null}
       <div className="mx-auto flex h-[76px] max-w-[1280px] items-center justify-between gap-4 px-4 md:px-8">
         <Wordmark lang={lang} />
         <nav aria-label="Main" className="hidden items-center gap-7 text-fs14 font-medium uppercase tracking-[0.12em] text-muted lg:flex">
-          {NAV[lang].map(([href, label]) => (
+          {nav.map(([href, label]) => (
             <SLink key={href} to={`${prefix(lang)}${href}`} className="transition hover:text-gold">{label}</SLink>
           ))}
           <SLink to={`${prefix(lang)}/delivery`} className="transition hover:text-gold">{t.delivery}</SLink>
@@ -106,7 +110,7 @@ export function SiteHeader({ lang, overlay = false, settings = null }: { lang: L
       </div>
       <nav aria-label="Mobile" className="alc-noscroll flex gap-5 overflow-x-auto px-4 pb-3 text-fs13 font-medium uppercase tracking-[0.1em] text-muted lg:hidden">
         <SLink to={`${prefix(lang)}/catalog`} className="shrink-0 hover:text-gold">{t.catalog}</SLink>
-        {NAV[lang].map(([href, label]) => <SLink key={href} to={`${prefix(lang)}${href}`} className="shrink-0 hover:text-gold">{label}</SLink>)}
+        {nav.map(([href, label]) => <SLink key={href} to={`${prefix(lang)}${href}`} className="shrink-0 hover:text-gold">{label}</SLink>)}
         <SLink to={`${prefix(lang)}/blog`} className="shrink-0 hover:text-gold">{t.blog}</SLink>
       </nav>
     </header>

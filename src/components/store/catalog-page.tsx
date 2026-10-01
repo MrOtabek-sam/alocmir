@@ -86,7 +86,7 @@ export function CatalogPage({ lang, categories, category, products, settings, ch
                 className={`shrink-0 rounded-full border px-4 py-2 text-fs14 font-semibold transition ${!category ? "border-gold bg-tint text-ink" : "border-line text-muted hover:text-ink"}`}>
                 {t.allDrinks}
               </SLink>
-              {categories.map((c) => (
+              {categories.filter((c) => c.count > 0 || c.slug === category?.slug).map((c) => (
                 <SLink key={c.slug} to={`${prefix(lang)}/catalog/${c.slug}`}
                   className={`shrink-0 rounded-full border px-4 py-2 text-fs14 font-semibold transition ${category?.slug === c.slug ? "border-gold bg-tint text-ink" : "border-line text-muted hover:text-ink"}`}>
                   {c.name}
@@ -107,6 +107,11 @@ export function CatalogPage({ lang, categories, category, products, settings, ch
           <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {sorted.map((p, i) => <ProductCard key={p.slug} product={p} lang={lang} eager={i < 4} />)}
           </div>
+          {!sorted.length ? (
+            <p className="mt-4 text-fs16 text-muted">
+              {t.outOfStock}. <SLink to={`${prefix(lang)}/catalog`} className="font-semibold text-gold underline underline-offset-4">{t.viewAll}</SLink>
+            </p>
+          ) : null}
           {!sorted.length ? <p className="mt-10 text-muted">{t.outOfStock}</p> : null}
         </div>
       </main>

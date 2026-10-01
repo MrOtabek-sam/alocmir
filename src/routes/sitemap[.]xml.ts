@@ -22,7 +22,8 @@ export const Route = createFileRoute("/sitemap.xml")({
         let prods: { slug: string; updated_at: string }[] = [];
         let posts: PostRow[] = [];
         try {
-          cats = (await db().prepare("SELECT slug FROM categories ORDER BY sort").all<{ slug: string }>()).results ?? [];
+          cats = (await db().prepare(`SELECT slug FROM categories c WHERE EXISTS
+            (SELECT 1 FROM products p WHERE p.category = c.slug AND p.active = 1) ORDER BY sort`).all<{ slug: string }>()).results ?? [];
           prods = (await db().prepare("SELECT slug, updated_at FROM products WHERE active = 1").all<{ slug: string; updated_at: string }>()).results ?? [];
           posts = await loadLivePostRows();
         } catch {

@@ -43,7 +43,9 @@ export const getBlogPost = createServerFn({ method: "GET" })
     const post = localizePost(row, data.lang);
     // The post exists, just not in this language (e.g. after switching language).
     if (!post) return { missing: true as const };
-    const [products, recent] = await Promise.all([productsBySlugs(data.lang, post.products), loadPosts(data.lang, 4)]);
+    const [linked, recent] = await Promise.all([productsBySlugs(data.lang, post.products), loadPosts(data.lang, 4)]);
+    // If the post's own products are hidden or gone, show the current best sellers so the post still leads to a purchase.
+    const products = linked.length ? linked : await loadProducts(data.lang, { featured: true, limit: 4 });
     return { missing: false as const, post, products, related: recent.filter((p) => p.slug !== post.slug).slice(0, 3) };
   });
 
@@ -142,7 +144,7 @@ export const getChrome = createServerFn({ method: "GET" })
   .handler(async ({ data }) => {
     try {
       const [settings, categories] = await Promise.all([loadSettings(), loadCategories(data.lang)]);
-      return { settings, categories: categories.map((c) => ({ slug: c.slug, name: c.name })) };
+      return { settings, categories: categories.filter((c) => c.count > 0).map((c) => ({ slug: c.slug, name: c.name })) };
     } catch {
       return { settings: null, categories: [] as { slug: string; name: string }[] };
     }
