@@ -16,8 +16,13 @@ if (!url) {
   process.exit(1);
 }
 const db = createClient({ url, authToken: process.env.TURSO_AUTH_TOKEN });
+// Each migration runs once per database, so data changes (prices, products) don't overwrite later edits in the admin.
+await db.execute("CREATE TABLE IF NOT EXISTS _migrations (name TEXT PRIMARY KEY, applied_at TEXT NOT NULL DEFAULT (datetime('now')))");
+const done = new Set((await db.execute("SELECT name FROM _migrations")).rows.map((r) => r.name));
 for (const f of readdirSync("migrations").filter((f) => f.endsWith(".sql")).sort()) {
+  if (done.has(f)) continue;
   await db.executeMultiple(readFileSync(`migrations/${f}`, "utf8"));
+  await db.execute({ sql: "INSERT INTO _migrations (name) VALUES (?)", args: [f] });
   console.log("applied", f);
 }
 const added = await seedBlog(db);
